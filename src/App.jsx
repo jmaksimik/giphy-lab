@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import Gif from './Gif/Gif'
-import Form from './Form/Form'
+import Gif from './assets/components/Gif/Gif'
+import Button from './assets/components/Button/Button'
 
 function App() {
   const randomGif = 'https://api.giphy.com/v1/gifs/random?api_key=V5GNLMyjc8OShat1fVRSOtuN0sMY2brc'
 
   const [gifDetails, setGifDetails] = useState({});
+  const [toggle, setToggle] = useState(false);
 
-  function liftGifSearch(words) {
-    liftGifSearch(words)
+  function handleToggle(state) {
+    setToggle(!toggle);
+    setToggle(!toggle);
   }
 
 
@@ -31,12 +33,14 @@ function App() {
     
     makeApiCall();
 
-  }, [])
+  }, [toggle])
 
   return (
     <div className="App">
       <div>Git Roulette!</div>
-      <Form />
+      <Button handleToggle={handleToggle} />
+      <br />
+      <br />
       <Gif gifDetails={gifDetails} />
     </div>
   )
